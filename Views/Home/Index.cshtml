@@ -18,11 +18,13 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Chef's Name</td>
-                <td>Chef's Age</td>
-                <td>Chef's # of Dishes</td>
-            </tr>
+            @foreach(var chef in ViewBag.chefs){
+                <tr>
+                    <td>@chef.FirstName @chef.LastName</td>
+                    <td>@chef.Age</td>
+                    <td>@chef.Dishes.Count</td>
+                </tr>
+            }
         </tbody>
     </table>
 </div>

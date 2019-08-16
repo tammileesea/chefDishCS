@@ -13,11 +13,6 @@ namespace chefDish.Models {
         public string Name {get;set;}
 
         [Required]
-        [MinLength(2, ErrorMessage = "Chef's name must be at least 2 characters")]
-        [Display(Name = "Chef's Name")]
-        public string Chef {get;set;}
-
-        [Required]
         [Range(1, 6, ErrorMessage = "Tastiness level must be between 1 and 5")]        
         [Display(Name = "Tastiness")]
         public int Tastiness {get;set;}

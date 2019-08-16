@@ -1,0 +1,61 @@
+@model Dish
+
+<div>
+    <div class="text-center">
+        <h1>Add a Dish!</h1>
+        <a href="/">Home</a>
+    </div>
+    <div>
+        <form asp-action="addDish" asp-controller="Home" method="post">
+            <div class="form-group">
+                <span asp-validation-for="Name"></span><br>
+                <label asp-for="Name"></label>
+                <input class="form-control" asp-for="Name"><br>
+                <small class="form-text text-muted">Must be at least 2 characters.</small>
+            </div>
+
+            <div class="form-group">
+                <span asp-validation-for="CookId"></span><br>
+                <label asp-for="CookId"></label>
+                <select asp-for="CookId">
+                    <option selected disabled>Select a Chef</option>
+                    @foreach(var chef in ViewBag.chefs){
+                        <option value="@chef.ChefId">@chef.FirstName @chef.LastName</option>
+                    }
+                </select><br>
+                <small class="form-text text-muted">Must be at least 2 characters.</small>
+            </div>
+
+            <div class="form-group">
+                <span asp-validation-for="Calories"></span><br>
+                <label asp-for="Calories"></label>
+                <input class="form-control" asp-for="Calories"><br>
+                <small class="form-text text-muted">Must be at least 0 calories.</small>
+            </div>
+
+            <div class="form-group">
+                <span asp-validation-for="Tastiness"></span><br>
+                <label asp-for="Tastiness"></label>
+                <select asp-for="Tastiness">
+                    <option selected disabled>Select number</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select><br>
+            </div>
+            
+            <div class="form-group">
+                <span asp-validation-for="Description"></span><br>
+                <label asp-for="Description"></label>
+                <textarea class="form-control" asp-for="Description"></textarea><br>
+                <small class="form-text text-muted">Must be at least 20 characters.</small>
+            </div>
+
+            <!-- <input type="hidden" asp-for="CookId" value="1"> -->
+
+            <button class="btn btn-primary">Add Dish</button>
+        </form>
+    </div>
+</div>

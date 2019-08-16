@@ -30,3 +30,4 @@
 /Users/tammilee/Desktop/codingDojo/csharp/entity/chefDish/obj/Debug/netcoreapp2.2/chefDish.csproj.CopyComplete
 /Users/tammilee/Desktop/codingDojo/csharp/entity/chefDish/obj/Debug/netcoreapp2.2/Razor/Views/Home/Dishes.g.cshtml.cs
 /Users/tammilee/Desktop/codingDojo/csharp/entity/chefDish/obj/Debug/netcoreapp2.2/Razor/Views/Home/New.g.cshtml.cs
+/Users/tammilee/Desktop/codingDojo/csharp/entity/chefDish/obj/Debug/netcoreapp2.2/Razor/Views/Home/NewDish.g.cshtml.cs

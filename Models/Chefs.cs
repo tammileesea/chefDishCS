@@ -3,6 +3,31 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace chefDish.Models {
+    // public class MinimumAgeAttribute: ValidationAttribute {
+    //     int _minimumAge;
+    //     public MinimumAgeAttribute(int minimumAge) {
+    //         _minimumAge = minimumAge;
+    //     }
+
+    //     public override bool IsValid(object value) {
+    //         DateTime date;
+    //         if (DateTime.TryParse(value.ToString(), out date)) {
+    //             return date.AddYears(_minimumAge) < DateTime.Now;
+    //         }
+    //         return false;
+    //     }
+    // }
+
+    public class ValidBirthday : ValidationAttribute {
+        protected override ValidationResult IsValid(object value, ValidationContext validationContext){
+            if ((DateTime)value > DateTime.Now) {
+                return new ValidationResult("Birthday must be in the past");
+            } else {
+                return ValidationResult.Success;
+            }
+        }
+    }
+
     public class Chef {
         [Key]
         public int ChefId {get;set;}
@@ -18,6 +43,7 @@ namespace chefDish.Models {
         public string LastName {get;set;}
 
         [Required]
+        // [MinimumAge(18)]
         [DataType(DataType.Date)]
         [Display(Name = "Birthday")]
         public DateTime Birthday {get;set;}

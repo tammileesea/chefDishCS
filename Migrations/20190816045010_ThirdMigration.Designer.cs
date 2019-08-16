@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using chefDish.Models;
 
 namespace chefDish.Migrations
 {
     [DbContext(typeof(chefAndDishContext))]
-    partial class chefAndDishContextModelSnapshot : ModelSnapshot
+    [Migration("20190816045010_ThirdMigration")]
+    partial class ThirdMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,7 +26,8 @@ namespace chefDish.Migrations
 
                     b.Property<int>("Age");
 
-                    b.Property<DateTime>("Birthday");
+                    b.Property<DateTime?>("Birthday")
+                        .IsRequired();
 
                     b.Property<DateTime>("CreatedAt");
 
