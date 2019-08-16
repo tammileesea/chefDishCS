@@ -29,17 +29,26 @@ namespace chefDish.Controllers
         [HttpPost("addChef")]
         public IActionResult addChef(Chef newChef){
             if (ModelState.IsValid){
-                DateTime today = DateTime.Now;
-                DateTime DOB = newChef.Birthday;
-                int age = today.Year - DOB.Year;
-                if ((DOB.Month > today.Month) || (DOB.Month == DateTime.Now.Month && DOB.Day > today.Day)){
-                    age--;
+                if (newChef.Birthday != null){
+                    DateTime today = DateTime.Now;
+                    DateTime DOB = Convert.ToDateTime(newChef.Birthday);
+                    int age = today.Year - DOB.Year;
+                    if ((DOB.Month > today.Month) || (DOB.Month == DateTime.Now.Month && DOB.Day > today.Day)){
+                        age--;
+                    }
+                    // if (age < 18){
+                    //     return View("New");
+                    // }
+                    newChef.Age = age;
+                    dbContext.Add(newChef);
+                    dbContext.SaveChanges();
+                    return RedirectToAction("Index");
                 }
-                newChef.Age = age;
-                dbContext.Add(newChef);
-                dbContext.SaveChanges();
-                return RedirectToAction("Index");
+                return View("New");
             } else {
+                System.Console.WriteLine("***************************");
+                System.Console.WriteLine("NOT WORKING");
+                System.Console.WriteLine("***************************");
                 return View("New");
             }
         }
@@ -67,6 +76,11 @@ namespace chefDish.Controllers
                 dbContext.SaveChanges();
                 return RedirectToAction("Dishes");
             }
+            System.Console.WriteLine("***************************");
+            System.Console.WriteLine("NOT WORKING");
+            System.Console.WriteLine("***************************");
+            List<Chef> AllChefs = dbContext.chefs.ToList();
+            ViewBag.chefs = AllChefs;
             return View("NewDish");
         }
 
